@@ -63,6 +63,46 @@ int main()
   scanf("%d", &pontosturisticos2);
   printf("\n==== Carta 1 inserida ====\n");
 
+  float densidade1 = 0.0f;
+  float densidade2 = 0.0f;
+  float pib_per_capita1 = 0.0f;
+  float pib_per_capita2 = 0.0f;
+
+  if (area > 0.0f)
+  {
+    densidade1 = (float)populacao / area;
+  }
+  else
+  {
+    densidade1 = 0.0f; // ou indicar inválido
+  }
+
+  if (area2 > 0.0f)
+  {
+    densidade2 = (float)populacao2 / area2;
+  }
+  else
+  {
+    densidade2 = 0.0f;
+  }
+
+  if (populacao > 0)
+  {
+    pib_per_capita1 = PIB / (float)populacao;
+  }
+  else
+  {
+    pib_per_capita1 = 0.0f;
+  }
+
+  if (populacao2 > 0)
+  {
+    pib_per_capita2 = PIB2 / (float)populacao2;
+  }
+  else
+  {
+    pib_per_capita2 = 0.0f;
+  }
 
   printf("Todos os dados inseridos com sucesso.\n");
   printf("=== Dados Carta 1 ===\n");
@@ -73,6 +113,8 @@ int main()
   printf("Area: %f\n", area);
   printf("PIB: %f\n", PIB);
   printf("Numero Pontos turisticos: %d\n", pontosturisticos);
+  printf("Densidade Populacional: %.2f habitantes/km2\n", densidade1);
+  printf("PIB per capita: %.2f\n", pib_per_capita1);
 
   printf("=== Dados Carta 2 ===\n");
   printf("Estado2: %c\n", estado2);
@@ -82,6 +124,78 @@ int main()
   printf("Area: %f\n", area2);
   printf("PIB: %f\n", PIB2);
   printf("Numero Pontos turisticos: %d\n", pontosturisticos2);
+  printf("Densidade Populacional: %.2f habitantes/km2\n", densidade2);
+  printf("PIB per capita: %.2f\n", pib_per_capita2);
+
+  // Escolha fixa do atributo a ser comparado:
+  // 1 = Populacao, 2 = Area, 3 = PIB, 4 = Densidade Populacional, 5 = PIB per capita
+  const int ATRIBUTO = 5; // <-- escolha feita diretamente no código
+  const char *nome_atributo;
+  float valor1 = 0.0f;
+  float valor2 = 0.0f;
+  int menor_e_vencedor = 0; // se 1, menor valor vence (aplica-se para densidade)
+
+  if (ATRIBUTO == 1)
+  {
+    nome_atributo = "Populacao";
+    valor1 = (float)populacao;
+    valor2 = (float)populacao2;
+  }
+  else if (ATRIBUTO == 2)
+  {
+    nome_atributo = "Area";
+    valor1 = area;
+    valor2 = area2;
+  }
+  else if (ATRIBUTO == 3)
+  {
+    nome_atributo = "PIB";
+    valor1 = PIB;
+    valor2 = PIB2;
+  }
+  else if (ATRIBUTO == 4)
+  {
+    nome_atributo = "Densidade Populacional";
+    valor1 = densidade1;
+    valor2 = densidade2;
+    menor_e_vencedor = 1;
+  }
+  else
+  { // caso 5 ou qualquer outro valor padrão
+    nome_atributo = "PIB per capita";
+    valor1 = pib_per_capita1;
+    valor2 = pib_per_capita2;
+  }
+
+  printf("\nComparação de cartas (Atributo: %s):\n\n", nome_atributo);
+  printf("Carta 1 - %s (%c): %.2f\n\n", cidade, estado, valor1);
+  printf("Carta 2 - %s (%c): %.2f\n\n", cidade2, estado2, valor2);
+
+  if (valor1 == valor2)
+  {
+    printf("Resultado: Empate entre as cartas.\n");
+  }
+  else
+  {
+    int carta1_vence = 0;
+    if (menor_e_vencedor)
+    {
+      carta1_vence = (valor1 < valor2) ? 1 : 0;
+    }
+    else
+    {
+      carta1_vence = (valor1 > valor2) ? 1 : 0;
+    }
+
+    if (carta1_vence)
+    {
+      printf("Resultado: Carta 1 (%s) venceu!\n", cidade);
+    }
+    else
+    {
+      printf("Resultado: Carta 2 (%s) venceu!\n", cidade2);
+    }
+  }
 
   printf("Fim da execução do programa.\n");
   return 0;
