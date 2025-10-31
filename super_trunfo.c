@@ -67,21 +67,21 @@ int main()
   printf("Todos os dados inseridos com sucesso.\n");
   printf("=== Dados Carta 1 ===\n");
   printf("Estado: %c\n", estado);
-  printf("codigodacarta: %s\n", codigodacarta);
-  printf("cidade: %s\n", cidade);
-  printf("populacao: %d\n", populacao);
-  printf("area: %f\n", area);
+  printf("Codigo da carta: %s\n", codigodacarta);
+  printf("Cidade: %s\n", cidade);
+  printf("Populacao: %d\n", populacao);
+  printf("Area: %f\n", area);
   printf("PIB: %f\n", PIB);
-  printf("pontosturisticos: %d\n", pontosturisticos);
+  printf("Numero Pontos turisticos: %d\n", pontosturisticos);
 
   printf("=== Dados Carta 2 ===\n");
   printf("Estado2: %c\n", estado2);
-  printf("codigodacarta2: %s\n", codigodacarta2);
-  printf("cidade2: %s\n", cidade2);
-  printf("populacao2: %d\n", populacao2);
-  printf("area2: %f\n", area2);
-  printf("PIB2: %f\n", PIB2);
-  printf("pontosturisticos2: %d\n", pontosturisticos2);
+  printf("Codigo da carta: %s\n", codigodacarta2);
+  printf("Cidade: %s\n", cidade2);
+  printf("Populacao: %d\n", populacao2);
+  printf("Area: %f\n", area2);
+  printf("PIB: %f\n", PIB2);
+  printf("Numero Pontos turisticos: %d\n", pontosturisticos2);
 
   printf("Fim da execução do programa.\n");
   return 0;
